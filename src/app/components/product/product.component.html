@@ -1,3 +1,4 @@
-<h2>{{ product.name }}</h2>
 <app-img [img]="product.img"></app-img>
-<p>Precio: {{ product.price }}</p>
+<h2>Precio: {{ product.price }}</h2>
+<p>{{ product.name }}</p>
+<button (click)="onAddToCart()">Add cart</button>

@@ -13,25 +13,33 @@ export class ProductsComponent {
       id: 1,
       name: 'product1',
       img: '../assets/images/toy.jpg',
-      price: 0
+      price: 10
     },
     {
       id: 2,
       name: 'product2',
       img: '../assets/images/toy.jpg',
-      price: 0
+      price: 20
     },
     {
       id: 3,
       name: 'product3',
       img: '../assets/images/toy.jpg',
-      price: 0
+      price: 30
     },
     {
       id: 4,
       name: 'product4',
       img: '../assets/images/toy.jpg',
-      price: 0
+      price: 40
     }
   ];
+
+  myShoppingCart: Product[] = [];
+  total = 0;
+
+  onAddToShoppingCart(product: Product) {
+    this.myShoppingCart.push(product);
+    this.total = this.myShoppingCart.reduce((sum, item) => sum + item.price, 0);
+  }
 }
