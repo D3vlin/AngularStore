@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { StoreService } from "../../services/store.service";
 
@@ -7,7 +7,7 @@ import { StoreService } from "../../services/store.service";
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
   constructor(
     private storeService: StoreService
   ) { }

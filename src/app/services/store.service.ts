@@ -8,8 +8,6 @@ import { Product } from '../models/product.model';
 })
 export class StoreService {
 
-  constructor() { }
-
   private shoppingCart: Product[] = [];
   private cart = new BehaviorSubject<Product[]>([]);
 
