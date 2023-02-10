@@ -26,10 +26,9 @@ export class ProductsComponent {
   }
 
   products: Product[] = [];
-
   myShoppingCart: Product[] = [];
-
   total: number = 0
+  today = new Date();
 
   onAddToShoppingCart(product: Product) {
     this.storeService.addProduct(product);

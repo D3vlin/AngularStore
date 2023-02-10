@@ -1,5 +1,6 @@
 <p>En el carrito: {{ myShoppingCart.length }}</p>
 <p>Total: ${{ total }}</p>
+<p>Today: {{ today | date:'short'}}</p>
 <div class="products--grid">
   <app-product
     *ngFor="let product of products"
