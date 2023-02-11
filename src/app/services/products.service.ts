@@ -24,11 +24,15 @@ export class ProductsService {
     return this.httpClient.get<Product>(`${this.apiUrl}/${id}`);
   }
 
-  create(dto: CreateProductDTO): Observable<Product> {
+  create(dto: CreateProductDTO) {
     return this.httpClient.post<Product>(this.apiUrl, dto);
   }
 
   update(id: string, dto: UpdateProductDTO) {
     return this.httpClient.put<Product>(`${this.apiUrl}/${id}`, dto);
+  }
+
+  delete(id: string) {
+    return this.httpClient.delete<boolean>(`${this.apiUrl}/${id}`);
   }
 }
