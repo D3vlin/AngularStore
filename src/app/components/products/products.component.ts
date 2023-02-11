@@ -29,9 +29,22 @@ export class ProductsComponent implements OnInit {
   myShoppingCart: Product[] = [];
   total = 0
   today = new Date();
+  showProductDetail = false;
+  productChosen!: Product;
 
   onAddToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
+  }
+
+  onShowDetail(id: string) {
+    this.productsService.getProduct(id).subscribe(data => {
+      this.toggleProductDetail();
+      this.productChosen = data;
+    });
+  }
+
+  toggleProductDetail() {
+    this.showProductDetail = !this.showProductDetail;
   }
 }
