@@ -20,8 +20,9 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productsService.getAllProducts().subscribe(data => {
+    this.productsService.getProductsByPage(this.limit, this.offset).subscribe(data => {
       this.products = data;
+      this.offset += this.limit;
     });
   }
 
@@ -31,6 +32,8 @@ export class ProductsComponent implements OnInit {
   today = new Date();
   showProductDetail = false;
   productChosen!: Product;
+  limit = 10;
+  offset = 0;
 
   onAddToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
@@ -79,6 +82,13 @@ export class ProductsComponent implements OnInit {
       const productIndex = this.products.findIndex(item => item.id === this.productChosen.id)
       this.products.splice(productIndex, 1);
       this.showProductDetail = false;
+    });
+  }
+
+  LoadMore() {
+    this.productsService.getProductsByPage(this.limit, this.offset).subscribe(data => {
+      this.products = this.products.concat(data);
+      this.offset += this.limit;
     });
   }
 }
