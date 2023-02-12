@@ -34,6 +34,7 @@ export class ProductsComponent implements OnInit {
   productChosen!: Product;
   limit = 10;
   offset = 0;
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
   onAddToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
@@ -41,9 +42,14 @@ export class ProductsComponent implements OnInit {
   }
 
   onShowDetail(id: string) {
+    this.statusDetail = 'loading';
     this.productsService.getProduct(id).subscribe(data => {
       this.toggleProductDetail();
       this.productChosen = data;
+      this.statusDetail = 'success';
+    }, errorMessage => {
+      window.alert(errorMessage)
+      this.statusDetail = 'error';
     });
   }
 

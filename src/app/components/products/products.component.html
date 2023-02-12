@@ -1,3 +1,4 @@
+<button (click)="onShowDetail('999')">Detail not found</button>
 <button (click)="createNewProduct()">Create</button>
 <button (click)="LoadMore()">Load More</button>
 <p>En el carrito: {{ myShoppingCart.length }}</p>
@@ -12,6 +13,7 @@
   </app-product>
 </div>
 <div class="product-detail" [class.active]="showProductDetail">
+  {{ statusDetail }}
   <div *ngIf="productChosen">
     <button (click)="toggleProductDetail()">Close</button>
     <h1>{{ productChosen.title }}</h1>
