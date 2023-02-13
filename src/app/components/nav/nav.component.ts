@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from "rxjs/operators";
 
 import { StoreService } from "../../services/store.service";
 import { AuthService } from "../../services/auth.service";
@@ -15,7 +14,6 @@ export class NavComponent implements OnInit {
 
   activeMenu = false;
   counter = 0;
-  token = '';
   profile: User | null = null;
 
   constructor(
@@ -33,19 +31,8 @@ export class NavComponent implements OnInit {
     this.activeMenu = !this.activeMenu;
   }
 
-  Login() {
-    this.AuthService.Login('alexis@email.com', '123').pipe(
-      switchMap((data) => {
-        this.token = data.access_token;
-        return this.AuthService.Profile(this.token);
-      })
-    ).subscribe(data => {
-      this.profile = data;
-    });
-  }
-
-  GetProfile() {
-    this.AuthService.Profile(this.token).subscribe(data => {
+  LoginAndGetProfile() {
+    this.AuthService.LoginAndGetProfile('alexis@email.com', '123').subscribe(data => {
       this.profile = data;
     });
   }

@@ -19,8 +19,8 @@ export class AppComponent {
   }
 
   CreateUser() {
-    this.UsersService.Create({ name: 'Alexis', email: 'alexis@email.com', password: '123' }).subscribe(date => {
-
+    this.UsersService.Create({ name: 'Alexis', email: 'alexis@email.com', password: '123' }).subscribe(data => {
+      console.log(data);
     });
   }
 }

@@ -11,6 +11,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NavComponent } from './components/nav/nav.component';
 import { TimeInterceptor } from "./interceptors/time.interceptor";
+import { TokenInterceptor } from "./interceptors/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -27,11 +28,10 @@ import { TimeInterceptor } from "./interceptors/time.interceptor";
     HttpClientModule,
     SwiperModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TimeInterceptor,
-    multi: true
-  }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TimeInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
