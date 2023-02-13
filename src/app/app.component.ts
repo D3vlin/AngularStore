@@ -10,6 +10,7 @@ import { FilesService } from "./services/files.service";
 })
 export class AppComponent {
   imgParent = '';
+  imgUpload = '';
 
   constructor(
     private UsersService: UsersService,
@@ -28,5 +29,15 @@ export class AppComponent {
 
   OnDownloadPdf() {
     this.FilesService.GetFile('MyPdf.txt', './assets/files/text.txt', 'application/txt').subscribe();
+  }
+
+  OnUpladFile(event: Event) {
+    const element = event.target as HTMLInputElement;
+    const file = element.files?.item(0);
+    if (file) {
+      this.FilesService.UploadFile(file).subscribe(response => {
+        this.imgUpload = response.location;
+      });
+    }
   }
 }

@@ -6,4 +6,8 @@
 <p>
   <button (click)="OnDownloadPdf()">Descargar PDF</button>
 </p>
+<p>
+  <input type="file" (change)="OnUpladFile($event)">
+  <img *ngIf="imgUpload" [src]="imgUpload" >
+</p>
 <app-products></app-products>
