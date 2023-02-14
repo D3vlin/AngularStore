@@ -1,7 +1,4 @@
-<button (click)="onShowDetail('999')">Detail not found</button>
 <button (click)="createNewProduct()">Create</button>
-<button (click)="LoadMore()">Load More</button>
-<p>En el carrito: {{ myShoppingCart.length }}</p>
 <p>Total: ${{ total }}</p>
 <p>Today: {{ today | date:'short'}}</p>
 <div class="products--grid">
@@ -11,6 +8,7 @@
     (addedProduct)="onAddToShoppingCart($event)"
     (showProduct)="onShowDetail($event)">
   </app-product>
+  <button (click)="LoadMore()">Load More</button>
 </div>
 <div class="product-detail" [class.active]="showProductDetail">
   {{ statusDetail }}
