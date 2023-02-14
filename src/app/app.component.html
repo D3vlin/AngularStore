@@ -1,5 +1,4 @@
 <app-nav></app-nav>
-<router-outlet></router-outlet>
 <button (click)="CreateUser()">Crear Usuario</button>
 <p>
   <a href="./assets/files/text.txt" download>Descargar</a>
@@ -11,4 +10,4 @@
   <input type="file" (change)="OnUpladFile($event)">
   <img *ngIf="imgUpload" [src]="imgUpload" >
 </p>
-<app-products></app-products>
+<router-outlet></router-outlet>
