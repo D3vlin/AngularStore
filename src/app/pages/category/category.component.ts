@@ -17,14 +17,15 @@ export class CategoryComponent implements OnInit {
   products: Product[] = [];
   limit = 10;
   offset = 0;
+  productId: string | null = null;
 
   constructor(
-    private route: ActivatedRoute,
+    private ActivatedRoute: ActivatedRoute,
     private ProductsService: ProductsService
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap
+    this.ActivatedRoute.paramMap
     .pipe(
       switchMap( params => {
         this.categoryId = params.get('id');
@@ -39,6 +40,11 @@ export class CategoryComponent implements OnInit {
       })
     ).subscribe(data => {
       this.products = data;
+    });
+
+    this.ActivatedRoute.queryParamMap
+    .subscribe(params => {
+      this.productId = params.get('product');
     });
   }
 

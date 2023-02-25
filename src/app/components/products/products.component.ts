@@ -17,6 +17,12 @@ export class ProductsComponent {
   @Input() products: Product[] = [];
   @Output() OnLoadMore: EventEmitter<string> = new EventEmitter<string>();
 
+  @Input() set productId(id: string | null) {
+    if(id) {
+      this.onShowDetail(id);
+    }
+  }
+
   constructor(
     private storeService: StoreService,
     private productsService: ProductsService
@@ -38,8 +44,8 @@ export class ProductsComponent {
 
   onShowDetail(id: string) {
     this.statusDetail = 'loading';
+    if(!this.showProductDetail) { this.showProductDetail = true }
     this.productsService.getProduct(id).subscribe(data => {
-      this.toggleProductDetail();
       this.productChosen = data;
       this.statusDetail = 'success';
     }, errorMessage => {
