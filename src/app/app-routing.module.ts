@@ -13,13 +13,13 @@ import { ProfileComponent } from './pages/profile/profile.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'notFound', component: NotFoundComponent },
   { path: 'category/:id', component: CategoryComponent },
   { path: 'myCart', component: MyCartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'recovery', component: RecoveryComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
