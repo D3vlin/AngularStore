@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { Product } from '../../models/product.model';
 
@@ -29,12 +29,16 @@ export class CategoryComponent implements OnInit {
       switchMap( params => {
         this.categoryId = params.get('id');
         if (this.categoryId) {
-          return this.ProductsService.GetByCategory(this.categoryId, this.limit, this.offset);
+          return this.ProductsService.GetByCategory(
+            this.categoryId,
+            this.limit,
+            this.offset
+          );
         }
         return [];
       })
     ).subscribe(data => {
-      this.products = this.products.concat(data);
+      this.products = data;
     });
   }
 
