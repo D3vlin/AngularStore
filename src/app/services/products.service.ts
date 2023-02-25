@@ -4,7 +4,7 @@ import { HttpClient, HttpParams, HttpErrorResponse, HttpStatusCode } from '@angu
 
 import { UpdateProductDTO, CreateProductDTO, Product } from './../models/product.model';
 import { retry, catchError, map } from "rxjs/operators";
-import { throwError } from "rxjs";
+import { throwError, zip } from "rxjs";
 
 import { environment } from "./../../environments/environment";
 
@@ -54,6 +54,31 @@ export class ProductsService {
         return throwError('Ups Algo salio mal :/');
       })
     );
+  }
+
+  fetchReadAndUpdate(id: string, dto: UpdateProductDTO) {
+    return zip(
+      this.getOne(id),
+      this.update(id, dto)
+    );
+  }
+
+  getOne(id: string) {
+    return this.httpClient.get<Product>(`${this.apiUrl}/products/${id}`)
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === HttpStatusCode.Conflict) {
+          return throwError('Algo esta fallando en el server');
+        }
+        if (error.status === HttpStatusCode.NotFound) {
+          return throwError('El producto no existe');
+        }
+        if (error.status === HttpStatusCode.Unauthorized) {
+          return throwError('No estas permitido');
+        }
+        return throwError('Ups algo salio mal');
+      })
+    )
   }
 
   create(dto: CreateProductDTO) {
