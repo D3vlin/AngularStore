@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { switchMap } from "rxjs/operators";
 import { zip } from "rxjs";
 
-import { CreateProductDTO, Product, UpdateProductDTO } from '../../models/product.model';
+import { CreateProductDTO, Product, UpdateProductDTO } from '../../../models/product.model';
 
 import { StoreService } from 'src/app/services/store.service';
 import { ProductsService } from 'src/app/services/products.service';

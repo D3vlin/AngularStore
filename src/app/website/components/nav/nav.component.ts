@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { StoreService } from "../../services/store.service";
-import { AuthService } from "../../services/auth.service";
-import { CategoriesService } from "../../services/categories.service";
+import { StoreService } from "../../../services/store.service";
+import { AuthService } from "../../../services/auth.service";
+import { CategoriesService } from "../../../services/categories.service";
 
-import { Category } from "../../models/category.model";
-import { User } from "../../models/user.model";
+import { Category } from "../../../models/category.model";
+import { User } from "../../../models/user.model";
 
 @Component({
   selector: 'app-nav',
