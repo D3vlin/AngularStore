@@ -38,7 +38,7 @@
     </nav>
     <div class="info">
       <div class="account">
-        <button *ngIf="!profileCreated && !profile; else login" (click)="CreateUser()">Crear Usuario</button>
+        <button *ngIf="!profileCreated; else login" (click)="CreateUser()">Crear Usuario</button>
         <ng-template #login>
           <button *ngIf="!profile; else elseBlock" (click)="LoginAndGetProfile()">Login</button>
           <ng-template #elseBlock>

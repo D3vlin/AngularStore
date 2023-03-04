@@ -36,9 +36,10 @@ export class NavComponent implements OnInit {
     });
     this.GetAllCategories();
     this.AuthService.user$
-    .subscribe(profile => [
-      this.profile = profile
-    ])
+    .subscribe(profile => {
+      this.profile = profile;
+      this.profileCreated = this.profile ? true : false;
+    })
   }
 
   toggleMenu() {
