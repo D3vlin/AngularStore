@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { StoreService } from "../../../services/store.service";
 import { AuthService } from "../../../services/auth.service";
@@ -26,6 +27,7 @@ export class NavComponent implements OnInit {
     private AuthService: AuthService,
     private CategoriesService: CategoriesService,
     private UsersService: UsersService,
+    private Router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -58,5 +60,11 @@ export class NavComponent implements OnInit {
     .subscribe(() => {
       this.profileCreated = true;
     });
+  }
+
+  Logout() {
+    this.AuthService.logout();
+    this.profile = null;
+    this.Router.navigate(['/home']);
   }
 }
