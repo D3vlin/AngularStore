@@ -11,6 +11,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ProductDetailComponent } from '../shared/components/product-detail/product-detail.component';
 
 import { AuthGuard } from "./../guards/auth.guard";
+import { ExitGuard } from "./../guards/exit.guard";
 
 const routes: Routes = [{
   path: '',
@@ -27,7 +28,10 @@ const routes: Routes = [{
     { path: 'product/:id', component: ProductDetailComponent },
     { path: 'myCart', component: MyCartComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: 'register',
+      component: RegisterComponent,
+      canDeactivate: [ExitGuard]
+    },
     { path: 'recovery', component: RecoveryComponent },
     { path: 'profile',
       component: ProfileComponent,
