@@ -13,7 +13,6 @@ import { TokenService } from "./../services/token.service";
   providedIn: 'root'
 })
 export class AuthService {
-
   private apiUrl = `${environment.API_URL}/api/auth`;
   private user = new BehaviorSubject<User | null>(null);
   user$ = this.user.asObservable();
