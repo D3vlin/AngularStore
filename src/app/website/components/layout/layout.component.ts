@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { UsersService } from "../../../services/users.service";
 import { FilesService } from "../../../services/files.service";
 
 @Component({
@@ -14,15 +13,8 @@ export class LayoutComponent {
   imgUpload = '';
 
   constructor(
-    private UsersService: UsersService,
     private FilesService: FilesService
   ) { }
-
-  CreateUser() {
-    this.UsersService.Create({ name: 'Alexis', email: 'alexis@email.com', password: '123' }).subscribe(data => {
-      console.log(data);
-    });
-  }
 
   OnDownloadPdf() {
     this.FilesService.GetFile('MyPdf.txt', './assets/files/text.txt', 'application/txt').subscribe();

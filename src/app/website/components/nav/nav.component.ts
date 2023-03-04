@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { StoreService } from "../../../services/store.service";
 import { AuthService } from "../../../services/auth.service";
 import { CategoriesService } from "../../../services/categories.service";
+import { UsersService } from "../../../services/users.service";
 
 import { Category } from "../../../models/category.model";
 import { User } from "../../../models/user.model";
@@ -18,11 +19,13 @@ export class NavComponent implements OnInit {
   counter = 0;
   profile: User | null = null;
   categories: Category[] = [];
+  profileCreated = false;
 
   constructor(
     private storeService: StoreService,
     private AuthService: AuthService,
-    private CategoriesService: CategoriesService
+    private CategoriesService: CategoriesService,
+    private UsersService: UsersService,
   ) { }
 
   ngOnInit(): void {
@@ -47,6 +50,13 @@ export class NavComponent implements OnInit {
     this.CategoriesService.GetAll()
     .subscribe(date => {
       this.categories = date;
+    });
+  }
+
+  CreateUser() {
+    this.UsersService.Create({ name: 'Alexis', email: 'alexis@email.com', password: '123' })
+    .subscribe(() => {
+      this.profileCreated = true;
     });
   }
 }

@@ -10,6 +10,8 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProductDetailComponent } from '../shared/components/product-detail/product-detail.component';
 
+import { AuthGuard } from "./../guards/auth.guard";
+
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
@@ -27,7 +29,10 @@ const routes: Routes = [{
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'recovery', component: RecoveryComponent },
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile',
+      component: ProfileComponent,
+      canActivate: [ AuthGuard ]
+    },
   ],
 },];
 

@@ -38,8 +38,13 @@
     </nav>
     <div class="info">
       <div class="account">
-        <button *ngIf="!profile; else elseBlock" (click)="LoginAndGetProfile()">Login</button>
-        <ng-template #elseBlock>{{ profile?.email}}</ng-template>
+        <button *ngIf="!profileCreated; else login" (click)="CreateUser()">Crear Usuario</button>
+        <ng-template #login>
+          <button *ngIf="!profile; else elseBlock" (click)="LoginAndGetProfile()">Login</button>
+          <ng-template #elseBlock>
+            <a routerLink="/profile">{{ profile?.email}}</a>
+          </ng-template>
+        </ng-template>
       </div>
       <div class="cart">
         <a href="">
