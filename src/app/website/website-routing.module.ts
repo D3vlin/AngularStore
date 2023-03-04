@@ -16,7 +16,12 @@ const routes: Routes = [{
   children: [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
-    { path: 'category', loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryModule ) },
+    { path: 'category',
+      loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryModule ),
+      data: {
+        preload: true,
+      }
+     },
     { path: 'product/:id', component: ProductDetailComponent },
     { path: 'myCart', component: MyCartComponent },
     { path: 'login', component: LoginComponent },
