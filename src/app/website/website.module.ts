@@ -13,6 +13,8 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LayoutComponent } from './components/layout/layout.component';
 
+import { QuicklinkModule } from "ngx-quicklink";
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { LayoutComponent } from './components/layout/layout.component';
   imports: [
     CommonModule,
     WebsiteRoutingModule,
-    SharedModule
+    SharedModule,
+    QuicklinkModule,
   ]
 })
 export class WebsiteModule { }
