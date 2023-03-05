@@ -1,6 +1,6 @@
 [build]
   publish = "dist/angular-store"
-  command = "build:proxy"
+  command = "ng build:proxy"
 [[redirects]]
   from = "/*"
   to = "/index.html"
