@@ -1,33 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { SwiperModule } from 'swiper/angular';
+import { ExponentialPipe } from './pipes/exponential/exponential.pipe';
+import { HighlightDirective } from './directives/highlight/highlight.directive';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CartComponent } from './components/cart/cart.component';
 
-import { ImgComponent } from './components/img/img.component';
-import { ProductComponent } from './components/product/product.component';
-import { ProductsComponent } from './components/products/products.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-
-
+import { MaterialModule } from './../material/material.module';
 
 @NgModule({
   declarations: [
-    ImgComponent,
-    ProductComponent,
-    ProductsComponent,
-    ProductDetailComponent,
+    ExponentialPipe,
+    HighlightDirective,
+    HeaderComponent,
+    FooterComponent,
+    CartComponent
+  ],
+  exports: [
+    ExponentialPipe,
+    HighlightDirective,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    SwiperModule
-  ],
-  exports: [
-    ImgComponent,
-    ProductComponent,
-    ProductsComponent,
-    ProductDetailComponent,
-  ],
+    MaterialModule,
+    ReactiveFormsModule
+  ]
 })
 export class SharedModule { }
